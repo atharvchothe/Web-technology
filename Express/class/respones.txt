@@ -1,0 +1,19 @@
+respones object sends the data back to client 
+
+respones.send--send text
+respones.json --send json formart
+respones.status--check the hhtp status
+respones.sendfiles-- 
+example -
+    app.get('/',(req,res => {
+        const T new = new Date();
+        res.json({
+            message : "Hello",
+            Time: T
+        })
+    }))
+
+qurey parameter.
+
+
+tem

@@ -1,0 +1,18 @@
+ template engine allow the devevloper to generate dynamic html page using data from the server
+instead static html pages are created dynam
+ EGS - embedded java script
+pug- 
+ handl bars
+ why template 
+ they help in dynamic contain code reusabilty
+
+ example using EGS 
+1 install EGS - npm install EGS
+2 server 
+
+activtity
+1.steps follw
+2.static files 
+3.express router 
+4.complete express workflow
+5.

@@ -1,0 +1,29 @@
+it is the minimal and flexible application for node js that simplifies the dev of web server and API
+features - 1 routing 
+        2 middleware support
+        3 request and respond handling
+        4 template rendering
+        5 rest API creation 
+
+node for the small application and gives the complex code
+express for large appliaction gives the simple code comparing with node
+port are written in .env file or folder
+
+Activity -
+package.json and packagelock.json
+dev dependacny and dependacny
+put and patch ,post
+
+
+
+
+
+routing in Expressjs
+  it is refers to determing how an appliaction respond to client request to a specfic requirement 
+
+Component
+    url path 
+    http methods
+    handler methode
+
+
