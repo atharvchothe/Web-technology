@@ -1,0 +1,20 @@
+DOM -- Document Object Model
+-- it is the bridge between js and HTML
+-- it the programming interface for js
+-- web browesr loads        it converts htlm into object that object struutre is called dom 
+-- js used dom to read delete add change exchange
+
+
+
+get element -- use 
+queryselector and all -use 
+
+create one simple project using --1.project desige
+
+
+  ----  Method ---                             ---  Description ----
+document.getElementById(id)              	Find an element by element id
+document.getElementsByTagName(name)	        Find elements by tag name
+document.getElementsByClassName(name)	    Find elements by class name
+document.querySelector(selector)	        Find the first element that matches a CSS selector
+document.querySelectorAll(selector)	        Find all elements that match a CSS selector

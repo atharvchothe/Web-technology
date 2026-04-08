@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#languages {
+  margin-bottom: 30px;
+}
+
+#languages button {
+  padding: 10px 16px;
+  margin: 6px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+#languages button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+#info {
+  max-width: 500px;
+  margin: auto;
+  background: #020617;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+#features {
+  list-style: none;
+  padding: 0;
+}
+
+#features li {
+  background: #1e293b;
+  margin: 6px;
+  padding: 8px;
+  border-radius: 6px;
+}

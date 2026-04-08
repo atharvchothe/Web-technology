@@ -1,0 +1,32 @@
+road map for the web technology 
+
+**FRONTEND**				     BACKEND 
+					.NET     EXPRESS
+					
+HTML+CSS
+   |
+  JS 
+   |		---------> API <------- MANGO
+  DOM
+   |
+REACT /ANGULAR 
+
+
+
+
+1.what is the nodejs 
+is used TO  run JS  the code outside browser
+
+node filename.js
+
+
+2.what is the data types in js 
+primitive(fixed)	- number string symbol bool undefined null  bigint  
+non pri 		- object,arrar , function(collection of the values like function and array)
+
+
+
+3.diff bet let const var
+var - cannot under the scope 
+let - it is work under  block of scope
+const  - cannot change the values

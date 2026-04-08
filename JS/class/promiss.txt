@@ -1,0 +1,8 @@
+
+promises fetch in js ---->
+     promises is an object that is represent a future result of an asynchornuos opreations.
+     it means i will give the result 100%
+     real life example - zomatoo application
+     promises has 3 states - 1 pending 
+                             2 resolved 
+                             3 regected   

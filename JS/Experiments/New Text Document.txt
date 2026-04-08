@@ -1,0 +1,11 @@
+1--- declare array fuction , 
+2 count vowels 
+3 reverse the string 
+4 array largest element
+5 missing no
+6 check panlidrome in string
+7 fabonachi series
+8remove the duplicates from array
+9
+10funto find even or odd
+11 sum of array
