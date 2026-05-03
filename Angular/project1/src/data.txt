@@ -1,0 +1,45 @@
+data binding - is binding tech its connect UI to code
+interpollation  - {{ valuue}}
+property            [property] = value 
+event (click )' ()
+ngmModel  = 'value '
+show thye data from tx to html 
+binding the html property to ts variable
+call function on event 
+sink data both ways ts --> html and htnl to ts
+
+
+in home.ts
+{
+    fname :string = "Atharv" 
+    MyRoll:123 
+}
+
+in home.html
+{{fname}}
+{{MyRoll}}
+[src] = '  ' 
+<button(click) = 'showbutton()'>show </button> 
+
+
+2 way binding -
+    <input [(ngModel )] = "fname " , placeholder = fname >
+    
+
+Modules   before angular 15 need ngModel now we used angular 20 + so modulous are optional 
+we can use standalone component
+
+directives - think the directinve like magic wands that can change ur web page without rewriting it 
+types --- strural and attributes 
+ngif 
+ngfor                       ngstyle
+
+strutural - change the stru of ur page add remove , repeated work 
+ngif ngfor ngswtch
+
+
+activtiy 
+    how we can use if else switch in angular with example 
+
+routing - 
+    navigation page btn one page to another page is routing 

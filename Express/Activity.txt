@@ -1,0 +1,322 @@
+1. Difference between package.json and package-lock.json
+
+package.json
+
+* Contains project metadata such as name, version, scripts, and dependencies.
+* Created when we run npm init.
+* Developers can edit this file manually.
+* Stores dependency versions with ranges (example: ^4.18.2).
+* Used to manage the project configuration.
+
+package-lock.json
+
+* Automatically generated when npm installs packages.
+* Contains the exact version of every installed dependency.
+* Ensures the same dependency versions are installed on every system.
+* Not recommended to edit manually.
+
+---
+
+2. Difference between Dependencies and Dev Dependencies
+
+Dependencies
+
+* Packages required for the application to run in production.
+* Installed using: npm install package-name
+* Example: express, mongoose.
+
+Dev Dependencies
+
+* Packages required only during development.
+* Not needed in production.
+* Installed using: npm install package-name --save-dev
+* Example: nodemon, eslint, prettier.
+
+---
+
+3. Routes Creation and Use of JavaScript
+
+Routes are used to handle different URLs and requests in an Express application.
+
+Example:
+
+const express = require("express")
+const app = express()
+
+app.get("/", (req, res) => {
+res.send("Home Page")
+})
+
+app.get("/about", (req, res) => {
+res.send("About Page")
+})
+
+app.listen(3000, () => {
+console.log("Server running on port 3000")
+})
+
+Here:
+"/" represents the home route.
+"/about" represents the about page route.
+
+---
+
+4. Types of HTTP Methods
+
+GET
+Used to retrieve data from the server.
+
+POST
+Used to send new data to the server.
+
+PUT
+Used to update existing data.
+
+DELETE
+Used to remove data from the server.
+
+Example:
+
+app.get("/users", (req, res) => {
+res.send("Get Users")
+})
+
+app.post("/users", (req, res) => {
+res.send("Create User")
+})
+
+app.put("/users", (req, res) => {
+res.send("Update User")
+})
+
+app.delete("/users", (req, res) => {
+res.send("Delete User")
+})
+
+---
+
+MIDDLEWARE
+
+1. Why we use Middleware
+
+Middleware is a function that executes between the request and the response cycle.
+
+It is used for:
+
+* Logging
+* Authentication
+* Request validation
+* Error handling
+* Modifying request or response objects.
+
+Example:
+
+app.use((req, res, next) => {
+console.log("Middleware executed")
+next()
+})
+
+---
+
+2. Types of Middleware
+
+Application Middleware
+Used for the entire application using app.use().
+
+Router Middleware
+Used for specific routes or routers.
+
+Error Handling Middleware
+Used to handle errors in the application.
+
+Built-in Middleware
+Provided by Express such as express.json() and express.static().
+
+Third-party Middleware
+External packages like cors, morgan, body-parser.
+
+---
+
+3. Benefits of Middleware
+
+* Code reusability
+* Improved security
+* Easy request validation
+* Centralized logging
+* Better error handling
+* Cleaner and organized code structure
+
+---
+
+4. Middleware Use at Company Level
+
+In real-world applications middleware is used for:
+
+* User authentication (JWT verification)
+* Authorization checks
+* Logging user requests
+* API rate limiting
+* Error handling
+* Data validation
+* Security checks
+
+---
+
+QUERY PARAMETERS
+
+1. What are Query Parameters
+
+Query parameters are key-value pairs passed in the URL after the question mark (?).
+
+Example:
+
+[http://localhost:3000/users?name=atharv&age=21](http://localhost:3000/users?name=atharv&age=21)
+
+Here:
+name = atharv
+age = 21
+
+---
+
+2. Detailed Study of Query Parameters
+
+Query parameters are mainly used for filtering, searching, pagination, and sorting data.
+
+In Express, query parameters are accessed using req.query.
+
+Example:
+
+app.get("/users", (req, res) => {
+const name = req.query.name
+res.send("User name is " + name)
+})
+
+URL Example:
+
+[http://localhost:3000/users?name=atharv](http://localhost:3000/users?name=atharv)
+
+---
+
+3. Examples of Query Parameters
+
+/products?category=mobile
+
+/users?age=25
+
+/search?name=laptop
+
+/books?author=robert
+
+---
+
+4. Real Time Use of Query Parameters
+
+Query parameters are widely used in real-world applications.
+
+Examples:
+
+Search functionality
+amazon.com/search?product=shoes
+
+Pagination
+/products?page=2
+
+Filtering
+/products?price=1000
+
+Sorting
+/products?sort=price
+
+---
+
+TEMPLATE ENGINE
+
+1. Implement EJS
+
+EJS is a template engine used to generate dynamic HTML pages in Express.
+
+Installation:
+
+npm install ejs
+
+Server Setup:
+
+const express = require("express")
+const app = express()
+
+app.set("view engine", "ejs")
+
+app.get("/", (req, res) => {
+res.render("home", { name: "Atharv" })
+})
+
+app.listen(3000)
+
+EJS File (views/home.ejs):
+
+<h1>Hello <%= name %></h1>
+
+---
+
+2. What are Static Files
+
+Static files are files that are sent directly to the browser without any processing.
+
+Examples:
+
+* CSS files
+* Images
+* JavaScript files
+* Fonts
+
+Example:
+
+app.use(express.static("public"))
+
+Folder structure:
+
+project
+|-- public
+|   |-- style.css
+|   |-- image.png
+
+---
+
+3. What is Express Router
+
+Express Router helps organize routes into separate files to keep the project structured.
+
+Example:
+
+users.js
+
+const express = require("express")
+const router = express.Router()
+
+router.get("/", (req, res) => {
+res.send("Users list")
+})
+
+module.exports = router
+
+Main file:
+
+const users = require("./users")
+app.use("/users", users)
+
+---
+
+4. Complete Express Workflow
+
+The Express workflow follows this sequence:
+
+Client sends a request to the server.
+The Express server receives the request.
+Middleware processes the request.
+The route handler executes the business logic.
+Database interaction happens if needed.
+The server sends the response back to the client.
+
+Flow representation:
+
+Client → Middleware → Route → Controller Logic → Database → Response to Client

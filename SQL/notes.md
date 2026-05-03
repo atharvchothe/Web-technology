@@ -1,0 +1,92 @@
+SQL strut query lan
+
+is communicate with real time database 
+
+MySQL,sqlserver,oracle
+
+real time example - 
+
+ecommers 
+
+
+
+
+
+creartr table insert dadta
+
+select data upadet ,delete 
+
+
+
+select \* from stdeunt;
+
+create table student (prn no, name var(50) , );
+
+insert into student ();
+
+alter stuent 
+
+delete prn = 123 from student ;
+
+
+
+What is ORM -instead of using SQL query we use js object 
+
+student.findal -- ORm
+
+
+
+
+
+
+
+**Web Socket** 
+
+&#x09;IT is allows us real time communication httpp ->request and response 
+
+web  socket  
+
+real time chat app ,live stock price upadate online gaming .notification 
+
+npm install WS
+
+&#x09;
+
+
+
+
+
+Activties -deep study ws understand ws with example 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

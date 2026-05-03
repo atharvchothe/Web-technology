@@ -1,0 +1,76 @@
+why do 
+problem with js 
+full page reload 
+complex dom manipulation 
+hard to manage large application 
+
+update only required part 
+use only 
+
+virtual DOM
+react create the copy of OG dom called vritual dom
+in data changes react upates the virtual dom
+upate change only 
+high performance 
+
+how we can create the react project
+
+
+diff bet angular and react 
+market hipe 
+why react  library created
+
+vite - fast build tool 
+npm install 
+npm downl
+npm run dev start the server
+
+
+jsx - js +XML it write the html  code inside the xml 
+
+
+components is heart of react 
+functional compo	- function student {
+						return 
+						<h1> this fc </h1>
+						
+
+						}
+
+use of component -
+functionApp(){						-->parent
+	return <>  </> // naming 
+	<student/>
+	
+}
+
+
+props -- properties 
+
+means data pass from parent to child
+functionapp(){
+	return <student name ="Atharv"/>
+}
+function student(props)
+{
+	return <h2> name : {props.name} </h2>
+
+}
+
+
+activities - what is componets and types and where we use in react
+give the 2 examples 
+what is props and why wee use it 
+types with 2 examples
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+.container{
+    width:300px;
+    margin:auto;
+    text-align:center;
+}
+
+input{
+    padding:5px;
+    width:200px;
+}
+
+button{
+    padding:8px 15px;
+    background-color:#4CAF50;
+    color:white;
+    border:none;
+}

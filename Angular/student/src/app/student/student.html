@@ -1,0 +1,27 @@
+<div>
+
+  <h2>Student Form</h2>
+
+  <label>Student Name</label>
+  <input type="text" [(ngModel)]="studentName">
+
+  <br><br>
+
+  <label>Student PRN</label>
+  <input type="text" [(ngModel)]="studentPRN">
+
+  <br><br>
+
+  <button (click)="addStudent()">Add Student</button>
+
+  <hr>
+
+  <h3>Student List</h3>
+
+  <ul>
+    <li *ngFor="let student of studentList">
+      {{student.name}} - {{student.prn}}
+    </li>
+  </ul>
+
+</div>

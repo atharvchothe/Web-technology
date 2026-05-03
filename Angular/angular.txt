@@ -1,3 +1,7 @@
+it is single page it load page at one time on beower
+fast loading 
+larger appliactions
+
 package.json - list of package include dependecy 
 dependecy - part of production 
 dev       local dependecy

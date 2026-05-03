@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aunshka Textile & Winding Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf8f3;
+    --gold: #c8963e;
+    --gold-light: #e8b86d;
+    --dark: #1a1410;
+    --brown: #3d2b1f;
+    --medium: #6b4c35;
+    --text: #2c1f14;
+    --text-light: #7a6555;
+    --border: #d9cfc0;
+    --shadow: rgba(26,20,16,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(26,20,16,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,150,62,0.3);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .nav-logo span { display: block; font-size: 0.65rem; color: #a08060; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    color: #c9bfb0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav-toggle span { width: 24px; height: 2px; background: var(--gold); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 10% 6% 8%;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,150,62,0.04) 40px, rgba(200,150,62,0.04) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,150,62,0.04) 40px, rgba(200,150,62,0.04) 41px);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,150,62,0.15) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    border-radius: 50%;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,150,62,0.12);
+    border: 1px solid rgba(200,150,62,0.4);
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-title .accent { color: var(--gold); display: block; }
+  .hero-subtitle {
+    color: #a09080;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-stats { display: flex; gap: 3rem; animation: fadeUp 0.8s 0.45s ease both; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); }
+  .stat-label { font-size: 0.73rem; color: #7a6a5a; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: #5a4a3a; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll::after { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); }
+
+  /* SECTIONS */
+  section { padding: 6rem 6%; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 1rem;
+  }
+  .section-label::before { content: ''; width: 32px; height: 1.5px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 700; color: var(--brown); line-height: 1.2; margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-visual { position: relative; }
+  .about-card {
+    background: var(--dark); border-radius: 4px; padding: 3.5rem;
+    position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .about-card-year {
+    font-family: 'Playfair Display', serif; font-size: 6rem; font-weight: 900;
+    color: rgba(200,150,62,0.15); line-height: 1; margin-bottom: 1rem;
+  }
+  .about-card-text {
+    color: #c0a888; font-size: 1.1rem; line-height: 1.6;
+    font-family: 'Playfair Display', serif; font-style: italic;
+  }
+  .about-card-text strong { color: var(--gold); }
+  .about-floater {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold); color: var(--dark);
+    width: 110px; height: 110px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 0.75rem; font-weight: 700;
+    text-align: center; line-height: 1.2; box-shadow: 0 8px 30px rgba(200,150,62,0.4);
+  }
+  .about-floater big { font-size: 1.6rem; }
+  .about-text p { color: var(--text-light); font-size: 1rem; line-height: 1.85; margin-bottom: 1.2rem; }
+  .about-features { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .feature-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 1rem; background: var(--cream); border-radius: 4px; border-left: 3px solid var(--gold);
+  }
+  .feature-icon { font-size: 1.2rem; margin-top: 2px; }
+  .feature-title { font-size: 0.85rem; font-weight: 600; color: var(--brown); }
+  .feature-desc { font-size: 0.78rem; color: var(--text-light); margin-top: 2px; }
+
+  /* GALLERY */
+  #gallery { background: var(--cream); }
+  .gallery-header { text-align: center; margin-bottom: 3.5rem; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .gallery-item { border-radius: 4px; overflow: hidden; position: relative; background: var(--dark); cursor: pointer; }
+  .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-placeholder { width: 100%; padding-top: 100%; position: relative; overflow: hidden; }
+  .gallery-item:first-child .gallery-placeholder { padding-top: 75%; }
+  .gallery-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    transition: transform 0.4s ease;
+  }
+  .gallery-item:hover .gallery-inner { transform: scale(1.04); }
+  .g1 { background: linear-gradient(135deg, #2a1a0e 0%, #4a2e18 50%, #3d2510 100%); }
+  .g2 { background: linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 100%); }
+  .g3 { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
+  .g4 { background: linear-gradient(135deg, #1a0a0a 0%, #3d1515 100%); }
+  .g5 { background: linear-gradient(135deg, #0d1b0d 0%, #1a3520 100%); }
+  .gallery-icon { font-size: 3rem; opacity: 0.7; }
+  .gallery-item:first-child .gallery-icon { font-size: 5rem; }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    padding: 1.5rem 1rem 1rem; color: #e0d0b8; font-size: 0.82rem;
+    transform: translateY(10px); opacity: 0; transition: all 0.3s;
+  }
+  .gallery-item:hover .gallery-caption { transform: translateY(0); opacity: 1; }
+  .gallery-tag {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(200,150,62,0.9); color: var(--dark);
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 2px;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--dark); position: relative; overflow: hidden; }
+  #experience::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(200,150,62,0.08) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 20%, rgba(200,150,62,0.06) 0%, transparent 50%);
+  }
+  .exp-content { position: relative; z-index: 2; }
+  .exp-header { margin-bottom: 4rem; }
+  .exp-header .section-title { color: var(--cream); }
+  .exp-header .section-label { color: var(--gold-light); }
+  .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 4rem; }
+  .exp-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(200,150,62,0.15);
+    padding: 2.5rem 2rem; transition: background 0.3s;
+  }
+  .exp-card:hover { background: rgba(200,150,62,0.06); }
+  .exp-card-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+  .exp-card-num sup { font-size: 1.2rem; vertical-align: super; }
+  .exp-card-title { font-size: 0.95rem; font-weight: 600; color: var(--cream); margin-bottom: 0.6rem; }
+  .exp-card-desc { font-size: 0.82rem; color: #7a6a5a; line-height: 1.65; }
+  .exp-timeline { border-top: 1px solid rgba(200,150,62,0.2); padding-top: 3rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .timeline-item { position: relative; padding-left: 1.2rem; }
+  .timeline-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .timeline-year { font-size: 0.7rem; color: var(--gold); font-weight: 600; letter-spacing: 0.1em; margin-bottom: 5px; }
+  .timeline-event { font-size: 0.82rem; color: #8a7a6a; line-height: 1.5; }
+
+  /* WORKS / CALCULATOR */
+  #works { background: var(--warm-white); }
+  .works-header { text-align: center; margin-bottom: 3.5rem; }
+  .calculator-wrap {
+    max-width: 900px; margin: 0 auto;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 6px; box-shadow: 0 8px 50px var(--shadow); overflow: hidden;
+  }
+  .calc-top-bar {
+    background: var(--dark); padding: 1.5rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .calc-top-bar h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
+  .calc-top-bar p { color: #6a5a4a; font-size: 0.8rem; }
+  .calc-body { padding: 2.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-bottom: 1.8rem; }
+  .form-row-2 { grid-template-columns: 1fr 1fr; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--medium); }
+  .form-input, .form-select {
+    padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem; color: var(--text);
+    background: #faf8f5; transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+  }
+  .form-input:focus, .form-select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,150,62,0.12); }
+  .count-section { border: 1.5px solid var(--border); border-radius: 4px; margin-bottom: 1rem; overflow: hidden; }
+  .count-header {
+    background: var(--cream); padding: 0.75rem 1.2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .count-header span { font-size: 0.8rem; font-weight: 600; color: var(--brown); }
+  .count-body { padding: 1.2rem; }
+  .count-result {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 3px;
+    padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1rem; font-size: 0.88rem; color: var(--text-light);
+  }
+  .count-result .amount { font-weight: 700; color: var(--brown); font-size: 1rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.75rem 1.5rem; border: none; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-outline { background: transparent; border: 1.5px solid var(--gold); color: var(--gold); }
+  .btn-outline:hover { background: var(--gold); color: var(--dark); }
+  .btn-primary { background: var(--gold); color: var(--dark); }
+  .btn-primary:hover { background: var(--gold-light); box-shadow: 0 4px 16px rgba(200,150,62,0.35); }
+  .btn-danger { background: transparent; border: 1px solid #cc4444; color: #cc4444; padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+  .btn-danger:hover { background: #cc4444; color: #fff; }
+  .btn-dark { background: var(--dark); color: var(--gold); }
+  .btn-dark:hover { background: var(--brown); }
+  .calc-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .daily-total {
+    background: linear-gradient(135deg, var(--dark), var(--brown));
+    color: var(--cream); border-radius: 4px; padding: 1.2rem 1.8rem;
+    margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .daily-total-label { font-size: 0.82rem; opacity: 0.7; letter-spacing: 0.08em; text-transform: uppercase; }
+  .daily-total-amount { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
+  .report-section { margin-top: 3rem; padding-top: 3rem; border-top: 2px solid var(--border); }
+  .report-section h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--brown); margin-bottom: 1.5rem; }
+  .report-table-wrap { overflow-x: auto; }
+  .report-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .report-table th { background: var(--dark); color: var(--gold); padding: 0.9rem 1rem; text-align: left; font-size: 0.73rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .report-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); }
+  .report-table tr:hover td { background: var(--cream); }
+  .report-table .total-row td { background: var(--cream); font-weight: 700; color: var(--brown); border-top: 2px solid var(--gold); }
+  .report-card { background: var(--dark); border-radius: 4px; padding: 2rem; margin-top: 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+  .report-worker-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); }
+  .report-worker-week { font-size: 0.8rem; color: #6a5a4a; margin-top: 5px; }
+  .report-total { text-align: right; }
+  .report-total-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6a5a4a; }
+  .report-total-amt { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); }
+  .empty-state { text-align: center; padding: 3rem 1rem; color: #b0a090; font-size: 0.9rem; }
+  .empty-state .icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+
+  /* CONTACT */
+  #contact { background: var(--dark); position: relative; overflow: hidden; }
+  #contact::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(200,150,62,0.1) 0%, transparent 60%); }
+  .contact-inner { position: relative; z-index: 2; }
+  .contact-header { margin-bottom: 3.5rem; }
+  .contact-header .section-title { color: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info-block { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    padding: 1.5rem; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,150,62,0.15); border-radius: 4px; transition: border-color 0.3s;
+  }
+  .contact-item:hover { border-color: rgba(200,150,62,0.4); }
+  .contact-icon {
+    width: 44px; height: 44px; background: rgba(200,150,62,0.12);
+    border: 1px solid rgba(200,150,62,0.3); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6a5a4a; margin-bottom: 4px; }
+  .contact-val { color: var(--cream); font-size: 0.95rem; font-weight: 500; }
+  .contact-val a { color: var(--gold-light); text-decoration: none; }
+  .contact-val a:hover { text-decoration: underline; }
+  .contact-cta { background: rgba(200,150,62,0.08); border: 1px solid rgba(200,150,62,0.2); border-radius: 4px; padding: 2rem; }
+  .contact-cta h4 { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.2rem; margin-bottom: 0.8rem; }
+  .contact-cta p { color: #7a6a5a; font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+  /* FOOTER */
+  footer {
+    background: #0f0b08; padding: 2rem 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(200,150,62,0.15);
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; }
+  .footer-copy { font-size: 0.75rem; color: #4a3a2a; }
+  .footer-right { font-size: 0.75rem; color: #4a3a2a; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--dark); border: 1px solid var(--gold); color: var(--cream);
+    padding: 1rem 1.5rem; border-radius: 4px; font-size: 0.88rem; z-index: 9999;
+    transform: translateY(20px); opacity: 0; transition: all 0.3s; pointer-events: none;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--dark); flex-direction: column; gap: 0; padding: 1rem 0; }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; padding: 0.9rem 5%; }
+    .nav-toggle { display: flex; }
+    #about { grid-template-columns: 1fr; gap: 2.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-timeline { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { flex-wrap: wrap; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 4rem 5%; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:first-child { grid-column: span 1; }
+    .exp-timeline { grid-template-columns: 1fr; }
+    .calc-body { padding: 1.5rem; }
+    .report-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    Aunshka Textile
+    <span>& Winding Works</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="closeNav()">Home</a></li>
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#gallery" onclick="closeNav()">Gallery</a></li>
+    <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+    <li><a href="#works" onclick="closeNav()">Works</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Trusted Since 2004 · Pune, Maharashtra</div>
+    <h1 class="hero-title">
+      Aunshka Textile
+      <span class="accent">& Winding Works</span>
+    </h1>
+    <p class="hero-subtitle">
+      Precision yarn winding and re-winding services crafted to the exact requirements of our customers. Quality, reliability, and two decades of expertise — delivered every day.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">20<sup>+</sup></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Yarn Count Types</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Customer Trust</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-card">
+      <div class="about-card-year">20+</div>
+      <div class="about-card-text">
+        <strong>"Trusted winding professionals"</strong> delivering quality textile services since the early 2000s.
+      </div>
+    </div>
+    <div class="about-floater">
+      <big>✦</big>
+      Est.<br>2004
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">Winding Work Done Right, Every Time</h2>
+    <p>At Aunshka Textile and Winding Works, we provide <strong>trusted winding and re-winding services</strong> tailored to each customer's requirements. Our focus is on delivering reliable, high-quality textile winding that meets exact specifications.</p>
+    <p>From yarn count 20 to 60, we handle a wide variety of winding tasks with the same care, precision, and professionalism that has earned us the trust of our clients over two decades.</p>
+    <p>We believe every cone wound correctly is a promise kept — to our customers, to quality, and to the craft of textile work.</p>
+    <div class="about-features">
+      <div class="feature-item">
+        <div class="feature-icon">🧵</div>
+        <div><div class="feature-title">Cone Winding</div><div class="feature-desc">Precise cone-to-cone winding for all yarn counts</div></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔄</div>
+        <div><div class="feature-title">Re-Winding</div><div class="feature-desc">Re-winding to custom requirements</div></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚖️</div>
+        <div><div class="feature-title">Weight Accuracy</div><div class="feature-desc">Consistent weight per cone guaranteed</div></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏭</div>
+        <div><div class="feature-title">Factory Grade</div><div class="feature-desc">Professional machinery and skilled workforce</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">A Glimpse Inside Our Operations</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-inner g1">
+          <div class="gallery-icon">🏭</div>
+          <div style="color:#c8963e;font-size:0.9rem;font-weight:600;">Winding Floor</div>
+        </div>
+      </div>
+      <div class="gallery-tag">Main Floor</div>
+      <div class="gallery-caption">Our main winding operations floor</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-inner g2">
+          <div class="gallery-icon">🧶</div>
+          <div style="color:#8090c0;font-size:0.85rem;font-weight:600;">Yarn Cones</div>
+        </div>
+      </div>
+      <div class="gallery-tag">Product</div>
+      <div class="gallery-caption">Finished yarn cones ready for dispatch</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-inner g3">
+          <div class="gallery-icon">⚙️</div>
+          <div style="color:#80c0b0;font-size:0.85rem;font-weight:600;">Winding Machine</div>
+        </div>
+      </div>
+      <div class="gallery-tag">Machinery</div>
+      <div class="gallery-caption">High-speed winding machines</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-inner g4">
+          <div class="gallery-icon">🧵</div>
+          <div style="color:#c08080;font-size:0.85rem;font-weight:600;">Thread Spools</div>
+        </div>
+      </div>
+      <div class="gallery-tag">Raw Material</div>
+      <div class="gallery-caption">Incoming yarn spools — counts 20, 30, 40, 60</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-inner g5">
+          <div class="gallery-icon">📦</div>
+          <div style="color:#80c080;font-size:0.85rem;font-weight:600;">Quality Check</div>
+        </div>
+      </div>
+      <div class="gallery-tag">QC</div>
+      <div class="gallery-caption">Every batch checked before dispatch</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-content">
+    <div class="exp-header">
+      <div class="section-label">Our Track Record</div>
+      <h2 class="section-title">Two Decades of Winding Excellence</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-card-num">20<sup>+</sup></div>
+        <div class="exp-card-title">Years in Business</div>
+        <div class="exp-card-desc">Consistently serving textile manufacturers across the region with trusted winding solutions since the early 2000s.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-num">4</div>
+        <div class="exp-card-title">Yarn Count Specializations</div>
+        <div class="exp-card-desc">Expertise in Count 20, 30, 40 and 60 — each requiring specific tension, speed and handling techniques.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-num">100%</div>
+        <div class="exp-card-title">On-Time Delivery</div>
+        <div class="exp-card-desc">Our structured work tracking system ensures every order is delivered accurately and on schedule, week after week.</div>
+      </div>
+    </div>
+    <div class="exp-timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2004</div>
+        <div class="timeline-event">Founded Aunshka Textile & Winding Works in Pune</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2008</div>
+        <div class="timeline-event">Expanded to handle Count 60 yarn — precision winding</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-event">Upgraded machinery for higher output and consistency</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-event">20 years of trusted service — still going strong</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS / SALARY CALCULATOR -->
+<section id="works">
+  <div class="works-header">
+    <div class="section-label">Salary System</div>
+    <h2 class="section-title">Worker Winding Work & Salary Calculator</h2>
+    <p style="color:var(--text-light);max-width:560px;margin:0 auto;font-size:0.95rem;line-height:1.7;">Enter daily work details to auto-calculate worker salary. Add multiple yarn counts, save each day, and generate a full weekly report.</p>
+  </div>
+  <div class="calculator-wrap">
+    <div class="calc-top-bar">
+      <div>
+        <h3>Daily Work Entry</h3>
+        <p>Week: Saturday → Thursday</p>
+      </div>
+      <div style="text-align:right;">
+        <p id="weekLabel" style="color:var(--gold);font-size:0.85rem;font-weight:600;"></p>
+      </div>
+    </div>
+    <div class="calc-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Worker Name</label>
+          <input type="text" class="form-input" id="workerName" placeholder="e.g. Ramesh Kumar">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date</label>
+          <input type="date" class="form-input" id="workDate">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Day</label>
+          <input type="text" class="form-input" id="workDay" placeholder="Auto-filled" readonly>
+        </div>
+      </div>
+      <div id="countRows"></div>
+      <button class="btn btn-outline" onclick="addCountRow()">＋ Add Another Yarn Count</button>
+      <div class="daily-total" id="dailyTotalBox" style="display:none;">
+        <div>
+          <div class="daily-total-label">Total Daily Salary</div>
+          <div id="dailyBreakdown" style="font-size:0.8rem;color:#8a7a6a;margin-top:4px;"></div>
+        </div>
+        <div class="daily-total-amount" id="dailyTotalAmt">₹0.00</div>
+      </div>
+      <div class="calc-actions">
+        <button class="btn btn-primary" onclick="saveDayRecord()">✔ Save Day's Record</button>
+        <button class="btn btn-dark" onclick="generateWeeklyReport()">📋 Generate Weekly Report</button>
+        <button class="btn btn-outline" onclick="resetDayForm()">↺ Clear Form</button>
+      </div>
+    </div>
+
+    <!-- Weekly Report -->
+    <div class="calc-body report-section" id="reportSection" style="display:none;">
+      <h3>📊 Weekly Salary Report</h3>
+      <div id="reportCard"></div>
+      <div class="report-table-wrap" style="margin-top:1.5rem;">
+        <table class="report-table" id="reportTable">
+          <thead>
+            <tr>
+              <th>Day</th><th>Date</th><th>Count Details</th><th>Total (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="reportBody"></tbody>
+        </table>
+      </div>
+      <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="printReport()">🖨 Print Report</button>
+        <button class="btn btn-outline" onclick="clearWeeklyData()">🗑 Clear Weekly Data</button>
+      </div>
+    </div>
+
+    <!-- Saved Records -->
+    <div class="calc-body" style="border-top:1px solid var(--border);padding-top:2rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);margin-bottom:1rem;">This Week's Saved Records</h3>
+      <div id="savedList">
+        <div class="empty-state"><div class="icon">📂</div>No records saved yet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-header">
+      <div class="section-label" style="color:var(--gold-light);">Get In Touch</div>
+      <h2 class="section-title">Contact Aunshka Textile</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Email Address</div>
+            <div class="contact-val"><a href="mailto:aunshkatextile@gmail.com">aunshkatextile@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-val"><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-val">Pune, Maharashtra, India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Working Hours</div>
+            <div class="contact-val">Saturday – Thursday, 8:00 AM – 6:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div class="contact-cta">
+          <h4>Need Winding Work Done?</h4>
+          <p>We handle all counts — 20, 30, 40, and 60 — with precision and care. Get in touch to discuss your requirements.</p>
+          <a href="mailto:aunshkatextile@gmail.com" class="btn btn-primary">Send an Enquiry →</a>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(200,150,62,0.15);border-radius:4px;padding:2rem;">
+          <div style="color:var(--gold-light);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;">Rate Card</div>
+          <table style="width:100%;border-collapse:collapse;">
+            <tr style="border-bottom:1px solid rgba(200,150,62,0.1);">
+              <td style="padding:0.6rem 0;color:#8a7a6a;font-size:0.82rem;">Count 60</td>
+              <td style="padding:0.6rem 0;color:var(--cream);font-size:0.88rem;text-align:right;font-weight:600;">₹5.00 / kg</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,150,62,0.1);">
+              <td style="padding:0.6rem 0;color:#8a7a6a;font-size:0.82rem;">Count 40</td>
+              <td style="padding:0.6rem 0;color:var(--cream);font-size:0.88rem;text-align:right;font-weight:600;">₹4.00 / kg</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,150,62,0.1);">
+              <td style="padding:0.6rem 0;color:#8a7a6a;font-size:0.82rem;">Count 30</td>
+              <td style="padding:0.6rem 0;color:var(--cream);font-size:0.88rem;text-align:right;font-weight:600;">₹3.00 / kg</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0;color:#8a7a6a;font-size:0.82rem;">Count 20</td>
+              <td style="padding:0.6rem 0;color:var(--cream);font-size:0.88rem;text-align:right;font-weight:600;">₹2.50 / kg</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Aunshka Textile & Winding Works</div>
+  <div class="footer-copy">© 2024 Aunshka Textile. All rights reserved.</div>
+  <div class="footer-right">Pune, Maharashtra · Since 2004</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const RATES = { 60: 5, 40: 4, 30: 3, 20: 2.5 };
+let weeklyRecords = JSON.parse(localStorage.getItem('atw_records') || '[]');
+let countRowCount = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('workDate').value = new Date().toISOString().split('T')[0];
+  updateDay();
+  updateWeekLabel();
+  addCountRow();
+  renderSavedList();
+});
+
+document.getElementById('workDate').addEventListener('change', updateDay);
+
+function updateDay() {
+  const v = document.getElementById('workDate').value;
+  if (!v) return;
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('workDay').value = days[new Date(v + 'T00:00:00').getDay()];
+}
+
+function updateWeekLabel() {
+  const now = new Date();
+  const day = now.getDay();
+  const diff = day === 6 ? 0 : -(day + 1);
+  const sat = new Date(now);
+  sat.setDate(now.getDate() + (day === 6 ? 0 : diff === 0 ? -7 : diff));
+  const thu = new Date(sat); thu.setDate(sat.getDate() + 5);
+  const fmt = d => d.toLocaleDateString('en-IN', { day:'numeric', month:'short' });
+  document.getElementById('weekLabel').textContent = `Week: ${fmt(sat)} – ${fmt(thu)}`;
+}
+
+function addCountRow() {
+  countRowCount++;
+  const id = countRowCount;
+  const div = document.createElement('div');
+  div.className = 'count-section';
+  div.id = `countSection_${id}`;
+  div.innerHTML = `
+    <div class="count-header">
+      <span>Yarn Count Entry #${id}</span>
+      ${id > 1 ? `<button class="btn btn-danger" onclick="removeCountRow(${id})">✕ Remove</button>` : ''}
+    </div>
+    <div class="count-body">
+      <div class="form-row form-row-2" style="margin-bottom:1rem;">
+        <div class="form-group">
+          <label class="form-label">Yarn Count</label>
+          <select class="form-select" id="count_${id}" onchange="recalcRow(${id})">
+            <option value="">-- Select Count --</option>
+            <option value="60">Count 60 — ₹5/kg</option>
+            <option value="40">Count 40 — ₹4/kg</option>
+            <option value="30">Count 30 — ₹3/kg</option>
+            <option value="20">Count 20 — ₹2.50/kg</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Rate (₹/kg)</label>
+          <input type="text" class="form-input" id="rate_${id}" placeholder="Auto-filled" readonly style="background:#f0ede8;color:var(--medium);">
+        </div>
+      </div>
+      <div class="form-row form-row-2" style="margin-bottom:0;">
+        <div class="form-group">
+          <label class="form-label">Number of Cones</label>
+          <input type="number" class="form-input" id="cones_${id}" placeholder="e.g. 50" min="0" oninput="recalcRow(${id})">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Weight per Cone (kg)</label>
+          <input type="number" class="form-input" id="weight_${id}" placeholder="e.g. 1.2" min="0" step="0.01" oninput="recalcRow(${id})">
+        </div>
+      </div>
+      <div class="count-result" id="rowResult_${id}" style="display:none;">
+        <span>Salary: <span id="rowFormula_${id}"></span></span>
+        <span class="amount" id="rowAmt_${id}">₹0.00</span>
+      </div>
+    </div>`;
+  document.getElementById('countRows').appendChild(div);
+}
+
+function removeCountRow(id) {
+  document.getElementById(`countSection_${id}`).remove();
+  recalcTotal();
+}
+
+function recalcRow(id) {
+  const cnt = document.getElementById(`count_${id}`).value;
+  const rate = RATES[cnt] || 0;
+  document.getElementById(`rate_${id}`).value = rate ? `₹${rate}/kg` : '';
+  const cones = parseFloat(document.getElementById(`cones_${id}`).value) || 0;
+  const wt = parseFloat(document.getElementById(`weight_${id}`).value) || 0;
+  const amt = cones * wt * rate;
+  const resultEl = document.getElementById(`rowResult_${id}`);
+  if (cnt && cones > 0 && wt > 0) {
+    resultEl.style.display = 'flex';
+    document.getElementById(`rowFormula_${id}`).textContent = `${cones} × ${wt}kg × ₹${rate} = `;
+    document.getElementById(`rowAmt_${id}`).textContent = `₹${amt.toFixed(2)}`;
+  } else { resultEl.style.display = 'none'; }
+  recalcTotal();
+}
+
+function recalcTotal() {
+  let total = 0, breakdown = [];
+  for (let i = 1; i <= countRowCount; i++) {
+    const cntEl = document.getElementById(`count_${i}`);
+    if (!cntEl) continue;
+    const cnt = cntEl.value;
+    const cones = parseFloat(document.getElementById(`cones_${i}`)?.value) || 0;
+    const wt = parseFloat(document.getElementById(`weight_${i}`)?.value) || 0;
+    const rate = RATES[cnt] || 0;
+    if (cnt && cones > 0 && wt > 0) {
+      total += cones * wt * rate;
+      breakdown.push(`Count ${cnt}: ₹${(cones*wt*rate).toFixed(2)}`);
+    }
+  }
+  const box = document.getElementById('dailyTotalBox');
+  if (total > 0) {
+    box.style.display = 'flex';
+    document.getElementById('dailyTotalAmt').textContent = `₹${total.toFixed(2)}`;
+    document.getElementById('dailyBreakdown').textContent = breakdown.join('  +  ');
+  } else { box.style.display = 'none'; }
+}
+
+function saveDayRecord() {
+  const name = document.getElementById('workerName').value.trim();
+  const date = document.getElementById('workDate').value;
+  const day  = document.getElementById('workDay').value;
+  if (!name) { showToast('⚠️ Please enter worker name'); return; }
+  if (!date) { showToast('⚠️ Please select a date'); return; }
+  let countDetails = [], total = 0;
+  for (let i = 1; i <= countRowCount; i++) {
+    const cntEl = document.getElementById(`count_${i}`);
+    if (!cntEl) continue;
+    const cnt = cntEl.value;
+    const cones = parseFloat(document.getElementById(`cones_${i}`).value) || 0;
+    const wt = parseFloat(document.getElementById(`weight_${i}`).value) || 0;
+    const rate = RATES[cnt] || 0;
+    if (cnt && cones > 0 && wt > 0) {
+      const amt = cones * wt * rate;
+      total += amt;
+      countDetails.push({ count: cnt, cones, weight: wt, rate, amount: amt });
+    }
+  }
+  if (countDetails.length === 0) { showToast('⚠️ Please fill at least one count row'); return; }
+  weeklyRecords.push({ name, date, day, countDetails, total, savedAt: Date.now() });
+  localStorage.setItem('atw_records', JSON.stringify(weeklyRecords));
+  showToast(`✔ Saved — ${day}, ₹${total.toFixed(2)}`);
+  renderSavedList();
+}
+
+function renderSavedList() {
+  const el = document.getElementById('savedList');
+  if (weeklyRecords.length === 0) {
+    el.innerHTML = '<div class="empty-state"><div class="icon">📂</div>No records saved yet.</div>';
+    return;
+  }
+  el.innerHTML = weeklyRecords.map((r, i) => `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1rem;background:${i%2===0?'var(--cream)':'#fff'};border-radius:3px;margin-bottom:4px;">
+      <div>
+        <strong style="color:var(--brown);">${r.name}</strong>
+        <span style="margin:0 8px;color:#c0b0a0;">·</span>
+        <span style="color:var(--text-light);font-size:0.88rem;">${r.day}, ${r.date}</span>
+        <span style="margin-left:8px;font-size:0.78rem;color:var(--medium);">${r.countDetails.map(c=>`Ct${c.count}(${c.cones}c×${c.weight}kg)`).join(', ')}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <strong style="color:var(--brown);">₹${r.total.toFixed(2)}</strong>
+        <button class="btn btn-danger" onclick="deleteRecord(${i})">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+function deleteRecord(i) {
+  weeklyRecords.splice(i, 1);
+  localStorage.setItem('atw_records', JSON.stringify(weeklyRecords));
+  renderSavedList();
+  showToast('Record deleted');
+}
+
+function generateWeeklyReport() {
+  if (weeklyRecords.length === 0) { showToast('⚠️ No records saved yet'); return; }
+  const sec = document.getElementById('reportSection');
+  sec.style.display = 'block';
+  sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const workers = [...new Set(weeklyRecords.map(r => r.name))];
+  const mainWorker = workers[0];
+  const dates = weeklyRecords.map(r => r.date).sort();
+  const weekTotal = weeklyRecords.reduce((s, r) => s + r.total, 0);
+  document.getElementById('reportCard').innerHTML = `
+    <div class="report-card">
+      <div>
+        <div class="report-worker-name">${mainWorker}${workers.length > 1 ? ` + ${workers.length-1} more` : ''}</div>
+        <div class="report-worker-week">Week Period: ${dates[0]} to ${dates[dates.length-1]}</div>
+        <div style="margin-top:0.8rem;font-size:0.8rem;color:#6a5a4a;">${weeklyRecords.length} day(s) recorded</div>
+      </div>
+      <div class="report-total">
+        <div class="report-total-label">Weekly Total</div>
+        <div class="report-total-amt">₹${weekTotal.toFixed(2)}</div>
+      </div>
+    </div>`;
+  document.getElementById('reportBody').innerHTML = weeklyRecords.map(r => `
+    <tr>
+      <td><strong>${r.day}</strong></td>
+      <td>${r.date}</td>
+      <td style="font-size:0.82rem;color:var(--text-light);">
+        ${r.countDetails.map(c=>`Count ${c.count}: ${c.cones} cones × ${c.weight}kg × ₹${c.rate} = <strong>₹${c.amount.toFixed(2)}</strong>`).join('<br>')}
+      </td>
+      <td><strong style="color:var(--brown);">₹${r.total.toFixed(2)}</strong></td>
+    </tr>`).join('') + `
+    <tr class="total-row">
+      <td colspan="3">TOTAL WEEKLY SALARY — ${mainWorker}</td>
+      <td>₹${weekTotal.toFixed(2)}</td>
+    </tr>`;
+}
+
+function clearWeeklyData() {
+  if (!confirm('Clear all weekly records? This cannot be undone.')) return;
+  weeklyRecords = [];
+  localStorage.removeItem('atw_records');
+  renderSavedList();
+  document.getElementById('reportSection').style.display = 'none';
+  showToast('Weekly data cleared');
+}
+
+function printReport() { window.print(); }
+
+function resetDayForm() {
+  document.getElementById('workerName').value = '';
+  document.getElementById('countRows').innerHTML = '';
+  countRowCount = 0;
+  addCountRow();
+  document.getElementById('dailyTotalBox').style.display = 'none';
+  showToast('Form cleared');
+}
+
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
